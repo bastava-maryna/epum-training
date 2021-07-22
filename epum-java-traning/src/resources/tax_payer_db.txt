@@ -1,4 +1,5 @@
-id=10060, lastName=Petrov, firstName=Ivan, birthDate=06-10-1970, socialRest=0, children=(02-10-2005, 13-05-1996)
-id=10070, lastName=Sidorov, firstName=Aleksandr, birthDate=20-08-1975, socialRest=200, children=(16-11-2008)
-id=10080, lastName=Ivanova, firstName=Elena, birthDate=16-12-1974, socialRest=0, children=null
-id=10090, lastName=Lavrov, firstName=Kiril, birthDate=20-02-1980, socialRest=0, children=(14-05-2009, 15-06-2011, 20-03-2014)
+//id, lastName, firstName, birthDate, children=()
+10060, Petrov, Ivan, 06-10-1970, (02-10-2005, 13-05-1996)
+10070, Sidorov, Aleksandr, 20-08-1975, (16-11-2008)
+10080, Ivanova, Elena, 16-12-1974, ()
+10090, Lavrov, Kiril, 20-02-1980, (14-05-2009, 15-06-2011, 20-03-2014)

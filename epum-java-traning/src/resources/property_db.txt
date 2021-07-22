@@ -1,0 +1,19 @@
+//tax_payer_id, property_id, property_type, cost, saleDate, modelORaddress
+10060, 125, car, 2500, 06-10-2018, Renault
+10070, 346, car, 1800, 20-08-2000, Mazda
+10080, 960, car, 3600, 16-12-2005, Volga
+10090, 436, car, 4500, 20-02-2019, BMV
+10060, 333, car, 2800, 0, Renault
+10070, 375, car, 6000, 0, Mazda
+10080, 900, car, 1400, 0, Volga
+10090, 480, car, 5800, 0, BMV
+10060, 230, car, 3300, 0, Zyguli
+
+10060, 841, real_estate, 20500, 06-10-2019, Moscow Lenina 20
+10070, 102, real_estate, 10800, 20-08-2000, Minsk Beverly Hills 15
+10080, 574, real_estate, 36000, 16-12-2016, Vitebsk Minina 56
+10090, 658, real_estate, 45000, 20-02-2006, Grodno Lipanova 20
+10060, 359, real_estate, 28000, 0, Gomel Krasnova 4
+10070, 247, real_estate, 60000, 0, Mogilev Babina 8
+10080, 918, real_estate, 14000, 0, Rossony Sovetskaja 14
+10090, 455, real_estate, 58000, 0, Gorodok Pruhina 22
