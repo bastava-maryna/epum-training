@@ -19,16 +19,16 @@ public class PropertySaleTaxCalculator extends BaseTaxCalculator {
 		
 		if(incomes!=null) {
 			
-			System.out.println("month= "+month);
-			System.out.println("incomes: "+incomes.toString());
+			//System.out.println("month= "+month);
+			//System.out.println("incomes: "+incomes.toString());
 			
 			for(Income in:incomes) {
-				System.out.println("all propertyis: "+taxPayer.getProperty().toString());
+				//System.out.println("all propertyis: "+taxPayer.getProperty().toString());
 			
 				Property prop=taxPayer.getPropertyById(((PropertySaleIncome) in).getPropertyId());
 				
-				System.out.println("income: "+in.toString());
-				System.out.println("property: "+prop.toString());
+				//System.out.println("income: "+in.toString());
+				//System.out.println("property: "+prop.toString());
 				
 				Double curIncome=in.getSum();
 				Double curDeduction=0.0;
@@ -57,18 +57,14 @@ public class PropertySaleTaxCalculator extends BaseTaxCalculator {
 		LocalDate temp=LocalDate.MIN;
 		
 		for(Property p:property) {
-			System.out.println("p class: "+p.getClass());
-			System.out.println("propertyClass: "+propertyClass);
-			System.out.println(p.getClass()==propertyClass);
-			
 			if(p.getClass()==propertyClass) {
 				
 				LocalDate cur=p.getSaleDate();
-				System.out.println("temp= "+temp);
-				System.out.println("cur= "+cur);
+				//System.out.println("temp= "+temp);
+				//System.out.println("cur= "+cur);
 				if(cur!=null && cur.compareTo(temp)>0) {		
 					temp=cur;
-					System.out.println("new temp= "+temp);
+					//System.out.println("new temp= "+temp);
 				}
 			}
 		}

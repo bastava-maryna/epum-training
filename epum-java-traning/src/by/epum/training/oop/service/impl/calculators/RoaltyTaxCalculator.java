@@ -23,7 +23,7 @@ public class RoaltyTaxCalculator extends BaseTaxCalculator {
 				int curTaxRate=TaxData.valueOf(((RoyaltyIncome) in).getRoyaltyType().toString()).getValue();
 				Double curTaxBase=curIncome;
 				
-				System.out.println(curTaxRate+"%");
+				//System.out.println(curTaxRate+"%");
 				Double curTax=curTaxBase*curTaxRate/100;
 				this.update(curIncome, monthDeduction, curTax);
 			}

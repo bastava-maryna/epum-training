@@ -43,18 +43,18 @@ public class TemporaryStorageImpl implements TemporaryStorage{
 	
 	@Override
 	public void saveTaxPayer(TaxPayer taxPayer) {
-		System.out.println("Before saveTaxPayer"+ this.taxPayer);
+		//System.out.println("Before saveTaxPayer"+ this.taxPayer);
 		if(this.taxPayer==null || !this.taxPayer.getId().equals(taxPayer.getId())) {
 			this.taxPayer = taxPayer;
 			incomes=null;
 		}	
-		System.out.println("After saveTaxPayer"+ this.taxPayer);
+		//System.out.println("After saveTaxPayer"+ this.taxPayer);
 	}
 
 	public void saveIncomes(List<Income> incomes) {
-		System.out.println("Before saveIncomes"+ this.incomes);
+		//System.out.println("Before saveIncomes"+ this.incomes);
 		this.incomes = incomes;
-		System.out.println("After saveIncomes"+ this.incomes);
+		//System.out.println("After saveIncomes"+ this.incomes);
 	}
 	
 }

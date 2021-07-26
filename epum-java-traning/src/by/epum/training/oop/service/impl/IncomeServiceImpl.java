@@ -82,7 +82,6 @@ public class IncomeServiceImpl implements IncomeService {
 			
 		}
 		
-		return result;
-		
+		return result;	
 	}
 }

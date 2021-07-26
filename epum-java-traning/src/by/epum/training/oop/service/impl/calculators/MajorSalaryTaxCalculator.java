@@ -43,8 +43,6 @@ public class MajorSalaryTaxCalculator extends BaseTaxCalculator{
 				childrenDeductionNumber=getChildrenDeductionNumber(taxPayer.getChildren());
 			}
 				
-			System.out.println("children= "+childrenDeductionNumber);
-				
 			updateAvailableDeduction(childrenDeductionNumber);
 				
 			Double monthIncome=0.0;
@@ -74,5 +72,4 @@ public class MajorSalaryTaxCalculator extends BaseTaxCalculator{
 			
 		return this;
 	}	
-
 }

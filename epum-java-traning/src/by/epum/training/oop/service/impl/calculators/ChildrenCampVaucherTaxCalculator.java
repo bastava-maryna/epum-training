@@ -41,9 +41,9 @@ public class ChildrenCampVaucherTaxCalculator extends BaseTaxCalculator {
 			Double restDeduction=TaxData.CHILDREN_CAMP_VOUCHER_LIMIT.getValue()*childrenDeductionNumber
 					-appliedDeduction;
 			
-			System.out.println("start use camp children voucher calc");        
-			System.out.println("static appliedDeduction"+appliedDeduction);
-			System.out.println("restDeduction="+restDeduction);
+			//System.out.println("start use camp children voucher calc");        
+			//System.out.println("static appliedDeduction"+appliedDeduction);
+			//System.out.println("restDeduction="+restDeduction);
 			
 			if(restDeduction>0) {
 				if(monthIncome>=restDeduction) {
@@ -59,13 +59,11 @@ public class ChildrenCampVaucherTaxCalculator extends BaseTaxCalculator {
 			this.setType(incomes.get(0).getIncomeType());
 			updateAppliedDeduction(monthDeduction);
 			
-			System.out.println("after use camp children voucher calc");        
-			System.out.println("static totalSupport"+appliedDeduction);
-			System.out.println("restDeduction="+restDeduction);	
-			
+			//System.out.println("after use camp children voucher calc");        
+			//System.out.println("static totalSupport"+appliedDeduction);
+			//System.out.println("restDeduction="+restDeduction);	
 		}
 		
 		return this;
 	}	
-
 }
