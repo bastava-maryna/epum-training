@@ -52,29 +52,16 @@ public class FileIncomeDAO implements IncomeDAO {
 				
 					if(fromLine[0].equals(String.valueOf(taxPayerId))&& y==yy) {	
 						IncomeType type= IncomeType.valueOf(fromLine[2].toUpperCase());
-						Income income=null;
-							
-						if(type==IncomeType.PROPERTY_SALE ){
-							income=new PropertySaleIncome(LocalDate.parse(fromLine[1], FORMATTER),
-														  type,
-														  Double.valueOf(fromLine[3]), 
-														  (fromLine[4]!=null)?Long.valueOf(fromLine[4]):0);
-							
-						}else if(type==IncomeType.ADDITIONAL_SALARY || type==IncomeType.ADDITIONAL_MATERIAL_SUPPORT ){
-							income=new AdditionalIncome(LocalDate.parse(fromLine[1], FORMATTER),
-									  type,
-							  		  Double.valueOf(fromLine[3]), 
-									  Long.valueOf(fromLine[4]));
-						}else if(type==IncomeType.ROYALTY ){
-							income=new RoyaltyIncome(LocalDate.parse(fromLine[1], FORMATTER),
-										type,
-										Double.valueOf(fromLine[3]), 
-										RoyaltyType.valueOf(fromLine[4]));
-						}
-						else {
-							income=new Income(LocalDate.parse(fromLine[1], FORMATTER),
-											  type,
-											  Double.valueOf(fromLine[3]));
+						LocalDate date=LocalDate.parse(fromLine[1], FORMATTER);
+						Double sum=	Double.valueOf(fromLine[3])	;
+						
+						Income income;
+	
+						if(type==IncomeType.PROPERTY_SALE || type==IncomeType.ADDITIONAL_SALARY 
+								|| type==IncomeType.ADDITIONAL_MATERIAL_SUPPORT || type==IncomeType.ROYALTY) {
+							income=constructIncome(date,type,sum,fromLine[4]);
+						}else {
+							income=constructIncome(date,type,sum,"");
 						}
 						
 						incomes.add(income);
@@ -102,6 +89,31 @@ public class FileIncomeDAO implements IncomeDAO {
 	public void saveToStorage(List<Income> incomes) {
 		temporaryStorage.saveIncomes(incomes);
 	}
-
+	
+	private Income constructIncome(LocalDate date, IncomeType type, Double sum, String param) {
+		Income income=null;
+		
+		if(type==IncomeType.PROPERTY_SALE ){
+			income=new PropertySaleIncome(date,
+										  type,
+										  sum, 
+										  (param!=null)?Long.valueOf(param):0);
+			
+		}else if(type==IncomeType.ADDITIONAL_SALARY || type==IncomeType.ADDITIONAL_MATERIAL_SUPPORT ){
+			income=new AdditionalIncome(date,
+					  type,
+			  		  sum, 
+					  Long.valueOf(param));
+		}else if(type==IncomeType.ROYALTY ){
+			income=new RoyaltyIncome(date,
+						type,
+						sum, 
+						RoyaltyType.valueOf(param));
+		}
+		else {
+			income=new Income(date, type, sum);
+		}
+		return income;
+	}
 }
 
