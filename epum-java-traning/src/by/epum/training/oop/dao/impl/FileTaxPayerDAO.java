@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -14,6 +15,7 @@ import java.util.regex.Pattern;
 import by.epum.training.oop.dao.TaxPayerDAO;
 import by.epum.training.oop.dao.exception.DAOException;
 import by.epum.training.oop.dao.exception.DAOResourceException;
+import by.epum.training.oop.dao.exception.DAOWrongValueException;
 import by.epum.training.oop.entity.Car;
 import by.epum.training.oop.entity.Property;
 import by.epum.training.oop.entity.RealEstate;
@@ -36,6 +38,7 @@ public class FileTaxPayerDAO implements TaxPayerDAO {
 			while((line=reader.readLine())!=null) {
 				if(line.contains(String.valueOf(id))) {	
 					TaxPayer taxPayer=constructTaxPayer(line);	
+					if(taxPayer==null) throw new DAOWrongValueException("Cant transforn resource data for id="+id+" to internal type. Report to developer.");
 					return taxPayer;
 				}
 			}
@@ -58,6 +61,7 @@ public class FileTaxPayerDAO implements TaxPayerDAO {
 			while((line=reader.readLine())!=null) {
 				if(line.contains(lastName)) {	
 					TaxPayer taxPayer=constructTaxPayer(line);
+					if(taxPayer==null) throw new DAOWrongValueException("Cant transforn resource data to internal type. Report to developer.");
 					result.add(taxPayer);
 				}
 			}
@@ -102,9 +106,11 @@ public class FileTaxPayerDAO implements TaxPayerDAO {
 										   createChildren(children),
 										   createProperties(matcher.group("id")));
 				saveToStorage(taxPayer);
+			}  catch (DateTimeParseException e) {
+				throw new DAOWrongValueException ("Cant convert from resource to internal type. Report to developer",e);
 			} catch (NumberFormatException e) {
-				throw new DAOException (e);	
-			}        
+				throw new DAOException (e);		
+			} 
 		}
 		return taxPayer;
 	}
