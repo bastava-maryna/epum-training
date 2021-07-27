@@ -21,30 +21,32 @@ public class FileTaxDataDAO implements TaxDataDAO {
 	
 		try (BufferedReader reader=new BufferedReader(new FileReader(TAX_DATA_SOURCE)) ) {   
 			String line;
+			//form set of all taxes which need to make calculation
+			Set<TaxData> data=EnumSet.allOf(TaxData.class);
+			boolean isYearTaxDataExist=false;
 			
 			while((line=reader.readLine())!=null) {
 				if(!line.startsWith("//") && !line.isBlank()) {
 					String [] fromLine=line.split(", ");
-					//form set of all taxes which need to make calculation
-					Set<TaxData> data=EnumSet.allOf(TaxData.class);
 					
-					boolean isYearTaxDataExist=false;
 					if(fromLine[0].equals(year)) {	
 						isYearTaxDataExist=true;
 						TaxData temp= TaxData.valueOf(fromLine[1]);   
 					
 						if(data.contains(temp) ){
 							int taxValue=Integer.valueOf(fromLine[2]);
+							
 							if(taxValue<=0) {
 								throw new DAOWrongValueException("Tax value cant be negative or equal zero");
 							}
 							temp.setValue(taxValue);
 						}
 					}
-					if(!isYearTaxDataExist) {
-						throw new DAOWrongValueException("Tax data for year "+year+ " doesnt exist. Report to DB administrator");
-					}
-				}	
+				}
+			}
+			
+			if(!isYearTaxDataExist) {
+				throw new DAOWrongValueException("Tax data for year "+year+ " doesnt exist. Report to DB administrator");
 			}
 			
 		}catch(IllegalArgumentException e) {	
