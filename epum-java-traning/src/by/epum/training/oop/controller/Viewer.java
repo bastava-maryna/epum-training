@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import by.epum.training.oop.entity.Car;
+import by.epum.training.oop.entity.RealEstate;
 import by.epum.training.oop.entity.Income;
 import by.epum.training.oop.entity.IncomeType;
 import by.epum.training.oop.entity.Property;
@@ -36,8 +38,15 @@ public class Viewer {
 		}else {
 			for(Property p:taxPayer.getProperty()) {
 				result.append("\t\t").append(p.getClass().getSimpleName()).append(": id=").append(p.getId()).
-				       append(", cost=").append(p.getCost()).
-				       append(", sale date: ").append(p.getSaleDate()).append("\n");
+				       append(", cost=").append(p.getCost());
+				
+				if(p.getClass()==Car.class) {
+				    result.append(", model=").append(((Car)p).getModel());
+				}else if(p.getClass()==RealEstate.class) {    
+					result.append(", address=").append(((RealEstate)p).getAddress());
+				}
+				
+				result.append(", sale date: ").append(p.getSaleDate()).append("\n");
 			}
 		}	
 		result.append("--------------------------------------------------------------\n");

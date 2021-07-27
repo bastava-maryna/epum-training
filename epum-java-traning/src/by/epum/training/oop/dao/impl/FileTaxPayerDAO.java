@@ -106,11 +106,9 @@ public class FileTaxPayerDAO implements TaxPayerDAO {
 										   createChildren(children),
 										   createProperties(matcher.group("id")));
 				saveToStorage(taxPayer);
-			}  catch (DateTimeParseException e) {
+			}  catch (DateTimeParseException |NumberFormatException e) {
 				throw new DAOWrongValueException ("Cant convert from resource to internal type. Report to developer",e);
-			} catch (NumberFormatException e) {
-				throw new DAOException (e);		
-			} 
+			}  
 		}
 		return taxPayer;
 	}
@@ -126,6 +124,9 @@ public class FileTaxPayerDAO implements TaxPayerDAO {
 				if(!line.startsWith("//") && !line.isBlank()) {
 					if(line.contains(String.valueOf(id))) {	
 						Property prop=constructProperty(line);
+						if(prop==null) {
+							throw new DAOWrongValueException("Cant convert from property resource to internal type. Report to developer\"");
+						}
 						result.add(prop) ;
 					}
 				}
@@ -146,23 +147,26 @@ public class FileTaxPayerDAO implements TaxPayerDAO {
 		Matcher matcher=pattern.matcher(line);
 		
 		Property property=null;
-		
-		while (matcher.find()) {
-			if(matcher.group("type").equals("car")) {
-				property=new Car( 
+		try {
+			while (matcher.find()) {
+				if(matcher.group("type").equals("car")) {
+					property=new Car( 
 					   Long.valueOf(matcher.group("propertyId")), 
 					   Double.valueOf(matcher.group("cost")),
 					   (matcher.group("saleDate").equals("0"))?null:LocalDate.parse(matcher.group("saleDate"),FORMATTER),  //here can be exception 
 					   matcher.group("modelORaddress"));
-			}else if(matcher.group("type").equals("real_estate")) {
-				property=new RealEstate( 
+				}else if(matcher.group("type").equals("real_estate")) {
+					property=new RealEstate( 
 						   Long.valueOf(matcher.group("propertyId")), 
 						   Double.valueOf(matcher.group("cost")),
 						   (matcher.group("saleDate").equals("0"))?null:LocalDate.parse(matcher.group("saleDate"),FORMATTER),
 						   matcher.group("modelORaddress"));
-			}else {
-				throw new DAOException("Cant create property object. Property type from db does not match available apps property types. ");
-			}
+				}else {
+					throw new DAOException("Cant create property object. Property type from db does not match available apps property types. ");
+				}
+			}	
+		}catch(IllegalArgumentException |NullPointerException | DateTimeParseException e) {
+			throw new DAOWrongValueException("Cant convert from property resource to internal type. Report to developer",e);
 		}
 		
 		return property;
