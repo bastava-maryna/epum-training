@@ -50,7 +50,7 @@ public class TaxCalculatorServiceImpl implements TaxCalculatorService {
 		try {
 			getTaxData(year);
 			if(!Validator.isTaxDataComplete()) {
-				throw new ServiceValidatorException("Tax tariff cant be zero. Report to developer");
+				throw new ServiceValidatorException("Tax tariff cant be zero. Report to administrator");
 			};
 			
 			//get income data for chosen year grouped by month and type

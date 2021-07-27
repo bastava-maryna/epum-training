@@ -23,6 +23,7 @@ public class FileTaxDataDAO implements TaxDataDAO {
 			String line;
 			
 			while((line=reader.readLine())!=null) {
+				if(!line.startsWith("//") && !line.isBlank()) {
 					String [] fromLine=line.split(", ");
 					//form set of all taxes which need to make calculation
 					Set<TaxData> data=EnumSet.allOf(TaxData.class);
@@ -43,7 +44,8 @@ public class FileTaxDataDAO implements TaxDataDAO {
 					if(!isYearTaxDataExist) {
 						throw new DAOWrongValueException("Tax data for year "+year+ " doesnt exist. Report to DB administrator");
 					}
-				}
+				}	
+			}
 			
 		}catch(IllegalArgumentException e) {	
 			throw new DAOException ("Cant convert from resource data to enum value",e);
