@@ -27,7 +27,9 @@ public class IncomeServiceImpl implements IncomeService {
 		try {
 			result=incomeDAO.getIncomes(taxPayerId, year);
 		} catch (DAOException e) {
-			throw new ServiceException( e);
+			//throw new ServiceException(e.getCause());//which is better or use this to log?
+			//throw new ServiceException(e.getMessage());
+			throw new ServiceException(e);
 		}
 		
 		return result;

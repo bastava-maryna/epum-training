@@ -6,11 +6,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import by.epum.training.oop.dao.IncomeDAO;
 import by.epum.training.oop.dao.exception.DAOException;
+import by.epum.training.oop.dao.exception.DAOMissingValueException;
 import by.epum.training.oop.dao.exception.DAOResourceException;
 import by.epum.training.oop.dao.exception.DAOWrongValueException;
 import by.epum.training.oop.entity.AdditionalIncome;
@@ -84,8 +86,10 @@ public class FileIncomeDAO implements IncomeDAO {
 				temporaryStorage.setYear(yy);
 				temporaryStorage.saveIncomes(incomes);
 			}
-		}catch(IllegalArgumentException |NullPointerException e) {
+		}catch(IllegalArgumentException |NullPointerException | DateTimeParseException e) {
 			throw new DAOWrongValueException("Cant convert from resource to internal type. Report to developer",e);
+		}catch(ArrayIndexOutOfBoundsException e) {
+			throw new DAOMissingValueException("Missing value in resource. Report to administrator",e);	
 		}catch(FileNotFoundException e ) {	
 			throw new DAOResourceException (e);
 		}catch(IOException e) {	

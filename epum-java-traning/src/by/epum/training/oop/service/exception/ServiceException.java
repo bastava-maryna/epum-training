@@ -18,5 +18,10 @@ public class ServiceException extends Exception{
 	public ServiceException(String message,Exception e) {//wrapping
 		super(message,e);
 	}
+
+	public ServiceException(Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
 }
 
