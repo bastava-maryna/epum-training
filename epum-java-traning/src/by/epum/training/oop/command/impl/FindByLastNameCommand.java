@@ -22,7 +22,6 @@ public class FindByLastNameCommand implements Command {
 		
 		ServiceProvider provider=ServiceProvider.getInstance();
 		
-		
 		try {
 			List<TaxPayer> taxPayers=provider.getTaxPayerService().findByLastName(lastName);
 			responce=(taxPayers==null)?"There is no taxPayer with lastName= "+lastName : Viewer.showTaxPayersInfo(taxPayers);

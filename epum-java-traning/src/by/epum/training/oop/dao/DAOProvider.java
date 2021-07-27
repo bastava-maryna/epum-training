@@ -21,8 +21,6 @@ public final class DAOProvider {
 	public IncomeDAO getIncomeDAO() {
 		return incomeDAO;
 	}
-	
-	
 
 	public TaxDataDAO getTaxDataDAO() {
 		return taxDataDAO;

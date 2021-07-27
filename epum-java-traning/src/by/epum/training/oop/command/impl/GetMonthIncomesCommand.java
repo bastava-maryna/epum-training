@@ -25,9 +25,7 @@ public class GetMonthIncomesCommand implements Command{
 		year=params[2].split("=")[1];
 		month=params[3].split("=")[1];
 		String responce;
-		
-		
-		
+				
 		if(Validator.isYearValid(year)) {
 			if(Validator.isMonthValid(month)) {
 				
@@ -50,5 +48,4 @@ public class GetMonthIncomesCommand implements Command{
 		
 		return responce;
 	}
-
 }
