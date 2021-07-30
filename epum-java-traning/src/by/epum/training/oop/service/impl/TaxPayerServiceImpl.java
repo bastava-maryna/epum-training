@@ -11,7 +11,7 @@ import by.epum.training.oop.service.exception.ServiceException;
 
 
 public class TaxPayerServiceImpl implements TaxPayerService{
-	DAOProvider provider=DAOProvider.getInstance();
+	private final DAOProvider provider=DAOProvider.getInstance();
 	//TaxPayerDAO taxPayerDAO=provider.getTaxPayerDAO();  //what is better
 	
 	@Override

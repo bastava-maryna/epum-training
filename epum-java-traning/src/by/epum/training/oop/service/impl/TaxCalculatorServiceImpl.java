@@ -20,6 +20,7 @@ import by.epum.training.oop.service.impl.calculators.BaseTaxCalculator;
 import by.epum.training.oop.service.util.Validator;
 
 public class TaxCalculatorServiceImpl implements TaxCalculatorService {	
+	private final DAOProvider provider=DAOProvider.getInstance();
 	
 	@Override
 	public Map<IncomeType,BaseTaxCalculator> calculateAnnualTax(Long taxPayerId, String year) throws ServiceException {		
@@ -29,10 +30,10 @@ public class TaxCalculatorServiceImpl implements TaxCalculatorService {
 	
 	@Override
 	public Map<IncomeType, BaseTaxCalculator> calculatePeriodTax(Long taxPayerId, String year,String monthNumberPeriodEnd) throws ServiceException {
+		
 		ServiceProvider serviceProvider=ServiceProvider.getInstance();
 		TaxPayerService taxPayerService=serviceProvider.getTaxPayerService();
 		IncomeService incomeService=serviceProvider.getIncomeService();
-		
 		
 		TaxPayer taxPayer=taxPayerService.getById(taxPayerId);
 		//or
@@ -137,8 +138,8 @@ public class TaxCalculatorServiceImpl implements TaxCalculatorService {
 	@Override
 	public void getTaxData(String year) throws ServiceException {
 		try {
-			DAOProvider providerDAO=DAOProvider.getInstance();
-			providerDAO.getTaxDataDAO().getTaxData(year);
+			//DAOProvider providerDAO=DAOProvider.getInstance();
+			provider.getTaxDataDAO().getTaxData(year);
 		} catch (DAOException e) {
 			throw new ServiceException( e);
 		}					

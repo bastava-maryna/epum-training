@@ -17,11 +17,11 @@ import by.epum.training.oop.service.exception.ServiceException;
 
 public class IncomeServiceImpl implements IncomeService {
 	
-	DAOProvider provider=DAOProvider.getInstance();
-	IncomeDAO incomeDAO=provider.getIncomeDAO();
+	private final DAOProvider provider=DAOProvider.getInstance();
 	
 	@Override
 	public List<Income> getIncomes(Long taxPayerId, String year) throws ServiceException {
+		IncomeDAO incomeDAO=provider.getIncomeDAO();
 		List<Income> result=null;
 		
 		try {
