@@ -86,4 +86,5 @@ public abstract class StructuralUnit implements Unit,Serializable {  //?? need e
 	public String toString() {
 		return this.getClass().getSimpleName()+" [units=" + units.toString() +"]";
 	}
+
 }
