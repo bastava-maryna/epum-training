@@ -9,6 +9,7 @@ public class Abzac extends StructuralUnit {
 		super();
 	}
 
+	
 	public Abzac(List<Unit> units) {
 		super(units);
 	}
