@@ -12,5 +12,4 @@ public class Paragraph extends StructuralUnit {
 	public Paragraph(List<Unit> units) {
 		super(units);
 	}
-
 }

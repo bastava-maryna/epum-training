@@ -55,4 +55,5 @@ public class Mark implements Unit,Serializable{
 	public String toString() {
 		return this.getClass().getSimpleName()+" [mark=" + mark + "]";
 	}
+	
 }

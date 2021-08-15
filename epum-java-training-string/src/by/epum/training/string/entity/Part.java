@@ -30,5 +30,4 @@ public class Part extends StructuralUnit {
 		super(parts);
 		this.name = "";
 	}
-
 }
