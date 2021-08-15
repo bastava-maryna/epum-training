@@ -9,6 +9,7 @@ public class Validator {
 	private static final int START_YEAR= 2000;
 	private static final int FIRST_MONTH= 1;
 	private static final int LAST_MONTH= 12;
+
 	
 	public static boolean isTaxDataComplete() {
 		for(TaxData elem:TaxData.values()) {
