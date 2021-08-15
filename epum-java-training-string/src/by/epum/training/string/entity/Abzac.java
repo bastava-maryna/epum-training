@@ -19,5 +19,4 @@ public class Abzac extends StructuralUnit {
 	}
 
 	
-	
 }
