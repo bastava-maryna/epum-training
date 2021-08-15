@@ -66,7 +66,7 @@ public abstract class StructuralUnit implements Unit,Serializable {  //?? need e
 	public String getUnitView() {
 		StringBuilder builder=new StringBuilder();
 	
-		builder.append(this.getClass().getSimpleName()).append("\n");
+		builder.append(this.getClass().getSimpleName());
 	
 		return builder.toString();
 	}

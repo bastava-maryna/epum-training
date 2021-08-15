@@ -28,7 +28,7 @@ public class Mark implements Unit,Serializable{
 
 	@Override
 	public String getUnitView() {
-		return "         "+ this.getClass().getSimpleName()+" "+ String.valueOf(mark)+"\n";	
+		return "         "+ this.getClass().getSimpleName()+" "+ String.valueOf(mark);	
 	}
 
 	@Override

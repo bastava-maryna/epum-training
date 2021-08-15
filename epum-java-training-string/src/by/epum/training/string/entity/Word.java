@@ -23,7 +23,7 @@ public class Word implements Unit,Serializable{
 
 	@Override
 	public String getUnitView() {
-		 return "         "+ this.getClass().getSimpleName()+" "+ word+"\n";
+		 return "         "+ this.getClass().getSimpleName()+" "+ word;
 	}
 	
 	@Override
