@@ -4,14 +4,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public interface Unit{
-	public List<Unit>getAllUnits();
-	public void addUnit(Unit unit);
+	List<Unit>getAllUnits();
+	void addUnit(Unit unit);
 	
-	public Iterator<Unit> createIterator();
+	Iterator<Unit> createIterator();
 	
-	public String getUnitContent();
-	public String getUnitView();
-	public String getDelimiter();	
+	String getUnitContent();
+	String getUnitView();
+	String getDelimiter();	
 
 }
 

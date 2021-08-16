@@ -18,8 +18,8 @@ public class Part extends StructuralUnit {
 	}
 	
 	public Part(String name, List<Unit> parts) {
-		this(name);
-		units = parts;
+		super(parts);
+		this.name = name;
 	}
 
 	public String getName() {

@@ -11,7 +11,7 @@ public abstract class StructuralUnit implements Unit,Serializable {  //?? need e
 	
 	private static final long serialVersionUID = 7368391439959402488L;
 	
-	protected List<Unit>units;
+	private List<Unit>units;
 	private Iterator <Unit> iterator=null;
 		
 	//this delimiter-to separate the same structural units
@@ -21,7 +21,7 @@ public abstract class StructuralUnit implements Unit,Serializable {  //?? need e
 	}
 
 	public Iterator<Unit> createIterator(){
-		if(iterator==null) {
+		if(iterator==null || iterator.hasNext()==false) {
 			iterator=new UnitIterator(units.iterator());
 		}
 		return iterator;
@@ -81,6 +81,7 @@ public abstract class StructuralUnit implements Unit,Serializable {  //?? need e
 		
 		return builder.toString();
 	}
+
 
 	@Override
 	public String toString() {

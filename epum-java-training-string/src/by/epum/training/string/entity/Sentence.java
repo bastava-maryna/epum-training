@@ -7,17 +7,10 @@ public class Sentence extends StructuralUnit{
 	public String getDelimiter() {
 		return "";
 	}
-
-	@Override
-	public String getUnitView() {	
-		StringBuilder builder=new StringBuilder();
-		builder.append("      ").append(super.getUnitView()).append("\n");
-		
-		for(Unit u:units) {
-			builder.append(u.getUnitView()).append("\n");
-		}
-		
-		return builder.toString();
-	}
 	
+	@Override
+	public String getUnitView() {
+		return "      "+super.getUnitView();
+	}
+
 }
