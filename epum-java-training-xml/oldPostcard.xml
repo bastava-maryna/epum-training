@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oldPostcards xmlns="http://www.bastava_maryna.org/oldPostcardCatalogue"
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xsi:schemaLocation="http://www.bastava_maryna.org/oldPostcardCatalogue oldPostcard.xsd">
+	<oldPostcard id="542978512654875">
+		<description>Nasha Rasha</description>
+		<theme>NATURE</theme>
+		<type>REGULAR</type>
+		<isSent>true</isSent>
+		<country>Russia</country>
+		<year>1900</year>
+		<value>THEMATIC</value>
+	</oldPostcard>
+	<oldPostcard id="100000564714832">
+		<description>Berlin badminton competition</description>
+		<theme>SPORT</theme>
+		<type>REGULAR</type>
+		<isSent>false</isSent>
+		<country>Germany</country>
+		<year>1980</year>
+		<authors>
+			<author>Hans Regel</author>
+			<author>Eva Frau</author>
+		</authors>
+		<value>COLLECTION</value>
+	</oldPostcard>
+	<oldPostcard id="330020581714841">
+		<description>Prayer in the cathedral</description>
+		<theme>RELIGION</theme>
+		<type>CONGRATULATORY</type>
+		<isSent>true</isSent>
+		<country>France</country>
+		<year>1850</year>
+		<authors>
+			<author>Mark Renuar</author>
+		</authors>
+		<value>HISTORICAL</value>
+	</oldPostcard>
+	<oldPostcard id="441055586816661">
+		<description>Madrid bird`s eye view</description>
+		<theme>CITY_VIEW</theme>
+		<type>REGULAR</type>
+		<isSent>true</isSent>
+		<country>Spain</country>
+		<value>HISTORICAL</value>
+	</oldPostcard>
+</oldPostcards>

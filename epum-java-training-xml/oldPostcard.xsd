@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bastava_maryna.org/oldPostcardCatalogue" xmlns="http://www.bastava_maryna.org/oldPostcardCatalogue" elementFormDefault="qualified">
+	<xs:element name="oldPostcards">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="oldPostcard" type="OldPostcardType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+		
+		<xs:complexType name="OldPostcardType">
+			<xs:sequence>
+				<xs:element name="description">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"></xs:minLength>
+							<xs:maxLength value="200"></xs:maxLength>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="theme" type="ThemeType"></xs:element>
+				<xs:element name="type" type="PostcardType"></xs:element>
+				
+				<xs:element name="isSent">
+					<xs:simpleType>
+						<xs:restriction base="xs:boolean">
+							<xs:pattern value="true|false"></xs:pattern>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<xs:element name="country" type="xs:string"></xs:element>
+				<xs:element name="year" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:minInclusive value="1800"></xs:minInclusive>
+							<xs:maxInclusive value="2020"></xs:maxInclusive>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<xs:element name="authors" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="author" maxOccurs="unbounded" minOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="100"></xs:maxLength>
+										<xs:minLength value="1"></xs:minLength>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>	
+				
+				<xs:element name="value" type="ValueType"></xs:element>
+			</xs:sequence>
+			<xs:attribute name="id" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedLong">
+						<xs:totalDigits value="15"></xs:totalDigits>
+						<xs:minInclusive value="100000000000000"></xs:minInclusive>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+		
+		<xs:simpleType name="ThemeType">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="CITY_VIEW"></xs:enumeration>
+				<xs:enumeration value="NATURE"></xs:enumeration>
+				<xs:enumeration value="PEOPLE"></xs:enumeration>
+				<xs:enumeration value="RELIGION"></xs:enumeration>
+				<xs:enumeration value="SPORT"></xs:enumeration>
+				<xs:enumeration value="ARCHITECTURE"></xs:enumeration>
+			</xs:restriction>
+		</xs:simpleType>
+		
+		<xs:simpleType name="ValueType">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="HISTORICAL"></xs:enumeration>
+				<xs:enumeration value="COLLECTION"></xs:enumeration>
+				<xs:enumeration value="THEMATIC"></xs:enumeration>
+			</xs:restriction>
+		</xs:simpleType>
+		
+		<xs:simpleType name="PostcardType">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="CONGRATULATORY|ADVERTISING|REGULAR"></xs:pattern>
+			</xs:restriction>
+		</xs:simpleType>
+		
+</xs:schema>
