@@ -2,6 +2,7 @@ package by.epum.training.xml.xml_processing;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +21,15 @@ import by.epum.training.xml.domain.ValueType;
 
 public class OldPostcardsXmlStaxCursorReader {
 	private static final Logger LOGGER=Logger.getLogger(OldPostcardsXmlStaxCursorReader.class);
-
+	
 	public static List<OldPostcard> parseXML(String fileName) throws FileNotFoundException, XMLStreamException{
 		List<OldPostcard> postcards = new ArrayList<>();
-		OldPostcard op = null;		
+		OldPostcard op = null;	
+		XMLStreamReader reader=null;
 
 		try {
 			XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			XMLStreamReader reader = inputFactory.createXMLStreamReader(new FileInputStream(fileName));
+			reader = inputFactory.createXMLStreamReader(new FileInputStream(fileName));
 			
 			/**
 			 * Returns an integer code for this event.
@@ -156,6 +158,14 @@ public class OldPostcardsXmlStaxCursorReader {
 		}catch(FactoryConfigurationError e) {
 			LOGGER.error(e);
 			throw new FactoryConfigurationError(e.getMessage());
+		}
+		finally {
+			try {
+				reader.close();
+			} catch (XMLStreamException e) {
+				LOGGER.error(e);
+				throw new XMLStreamException(e.getMessage());
+			}
 		}
 		
 		return postcards;

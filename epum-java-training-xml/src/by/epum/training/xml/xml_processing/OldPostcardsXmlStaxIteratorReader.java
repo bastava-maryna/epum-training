@@ -9,7 +9,6 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.EndElement;
@@ -31,12 +30,13 @@ public class OldPostcardsXmlStaxIteratorReader {
 
 		List<OldPostcard> postcards = new ArrayList<>();
 		OldPostcard op = null;	
+		XMLEventReader reader=null;
 		
 		try {
 			XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
 			//create EventReader and pass xml file to it
-			XMLEventReader reader = xmlInputFactory.createXMLEventReader(new FileInputStream(fileName));
+			reader = xmlInputFactory.createXMLEventReader(new FileInputStream(fileName));
 
 			//move along all elements(events) 
 			while (reader.hasNext()) {
@@ -160,6 +160,14 @@ public class OldPostcardsXmlStaxIteratorReader {
 		}catch(FactoryConfigurationError e) {
 			LOGGER.error(e);
 			throw new FactoryConfigurationError(e.getMessage());
+		}
+		finally {
+			try {
+				reader.close();
+			} catch (XMLStreamException e) {
+				LOGGER.error(e);
+				throw new XMLStreamException(e.getMessage());
+			}
 		}
 		
 		return postcards;
