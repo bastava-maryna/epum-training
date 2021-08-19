@@ -18,6 +18,7 @@ import by.epum.training.xml.domain.PostcardType;
 import by.epum.training.xml.domain.ValueType;
 import by.epum.training.xml.xml_processing.OldPostcardsXmlStaxCursorReader;
 import by.epum.training.xml.xml_processing.OldPostcardsXmlStaxIteratorReader;
+import by.epum.training.xml.xml_processing.OldPostcardsXmlStaxIteratorWriter;
 import by.epum.training.xml.xml_processing.XmlValidator;
 
 public class Main {
@@ -82,12 +83,21 @@ public class Main {
 				System.out.println("***********************");
 			}
 			
+			String outputXmlFileName=PropertyFileHandler.getPropertyByName("outputXmlFileName");
+			LOGGER.info("oututXmlFileName="+xsdFileName);
+			
+			//write data to the output xml file
+			OldPostcardsXmlStaxIteratorWriter.writeToXml(postcards,outputXmlFileName);
+			LOGGER.info("Data written to xml file");
+			
+			System.out.println("All operation are finished successfully ");
+			
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (IOException|XMLStreamException e) {
 			System.out.println(e.getMessage());
 		} catch (SAXException e) {
 			System.out.println("StopExecution. XML file is not valid\n"+e.getMessage());
-		}
+		}		
 	}
 }
