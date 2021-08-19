@@ -31,7 +31,7 @@ public class OldPostcard {
 	}
 
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
