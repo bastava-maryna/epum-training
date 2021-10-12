@@ -1,0 +1,28 @@
+
+<footer>
+  <div class="footer grid">
+  		<div class="contact">
+	                        <h4><fmt:message key="footer.contacts"/></h4>
+	                        <span> <fmt:message key="footer.street"/><br>
+	                        <fmt:message key="footer.town"/><br>
+	                        +999 999 999</span>
+	    </div>              
+	                  
+	    <nav class="footer-menu">
+	                        
+	                        <ul>
+	                           <li> <a href="#"><fmt:message key="footer.about"/></a></li>
+	                           <li> <a href="#"><fmt:message key="footer.terms"/></a></li>
+	                           <li> <a href="#"> <fmt:message key="footer.privacy"/></a></li>
+	                           <li> <a href="#"><fmt:message key="footer.news"/></a></li>
+	                           <li> <a href="#"><fmt:message key="footer.cont"/> </a></li>
+	                        </ul>
+	   </nav>           
+              
+       <div class="copyright"> 
+                    <p>Copyright 2021 All Right Reserved By URBO</p>
+       </div>        
+   </div>
+</footer>
+</body>
+</html>

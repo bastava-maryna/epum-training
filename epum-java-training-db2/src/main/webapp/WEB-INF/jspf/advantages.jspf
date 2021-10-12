@@ -1,0 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<h4 class="advantages" ><strong><fmt:message key="advantages.start" /></strong><fmt:message key="advantages.rewards" /></h4>		
+
+<ul class="advantages">
+	<li><strong><fmt:message key="advantages.buy" /></strong><fmt:message key="advantages.easy"/> </li>
+	<li><strong><fmt:message key="advantages.collect"/></strong><fmt:message key="advantages.exchange"/></li>
+	<li><strong><fmt:message key="advantages.save"/></strong><fmt:message key="advantages.details"/></li>
+</ul>
+		
