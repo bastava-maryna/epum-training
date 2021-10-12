@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="5.0" xmlns="http://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_4_0.xsd">
+	<display-name>epum-java-training-db2</display-name>
+	<welcome-file-list>
+		<welcome-file>home.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>Controller</servlet-name>
+		<servlet-class>by.epum.training.db.controller.Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/jsp/*</url-pattern>
+	</servlet-mapping>
+
+   <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>by.epum.training.db.controller.filter.SecurityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/jsp/*</url-pattern>
+    </filter-mapping>
+ 	   
+    <jsp-config>
+		<jsp-property-group>
+			<description>header and footer settings</description>
+			<url-pattern>*.jsp</url-pattern>
+			<include-prelude>/WEB-INF/jspf/header1.jspf</include-prelude>
+			<include-coda>/WEB-INF/jspf/footer1.jspf</include-coda>
+		</jsp-property-group>
+		<jsp-property-group>
+			<description>jsp pages auto encodinf</description>
+			<url-pattern>*.jsp</url-pattern>
+			<page-encoding>UTF-8</page-encoding>
+		</jsp-property-group>
+		
+		
+	</jsp-config>
+	
+ 
+	<listener>
+		<listener-class>by.epum.training.db.controller.listener.ContextManager</listener-class>
+	</listener>
+	
+	
+	<listener>
+		<listener-class>by.epum.training.db.controller.listener.SessionListener</listener-class>
+	</listener>
+		
+	
+	<context-param>
+    	<description>images</description>
+    	<param-name>imagePath</param-name>
+    	<param-value>images/</param-value>
+    </context-param> 
+    
+    <context-param>
+        <param-name>jakarta.servlet.jsp.jstl.fmt.LocalizationContext</param-name>
+        <param-value>messages</param-value>
+    </context-param> 	
+      	
+    <context-param>  	
+    	<param-name>jdbcDriver</param-name>
+    	<param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    
+    <context-param>	
+    	<param-name>jdbcUrl</param-name>
+    	<param-value>jdbc:mysql://localhost:3306/railway_db?allowMultiQueries=true</param-value>
+    </context-param>
+    
+    <context-param>	
+    	<param-name>jdbcUser</param-name>
+    	<param-value>root</param-value>
+    </context-param>
+    
+    <context-param>	
+    	<param-name>jdbcPassword</param-name>
+    	<param-value>Mikalai1973</param-value>
+   </context-param>
+    
+    <context-param>	
+    	<param-name>jdbcMinSize</param-name>
+    	<param-value>30</param-value>
+    </context-param>
+    
+    <context-param>	
+    	<param-name>jdbcMaxSize</param-name>
+    	<param-value>300</param-value>
+   </context-param>
+   
+    <context-param>	
+    	<param-name>jdbcValidTimeout</param-name>
+    	<param-value>120</param-value>	
+	</context-param>
+	  
+   
+   <error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/jsp/error</location>
+	</error-page>
+	
+	
+	
+
+</web-app>
