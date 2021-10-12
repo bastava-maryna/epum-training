@@ -1,0 +1,39 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<jsp:useBean id="today" class="java.util.Date"/>
+ 
+ <fmt:formatDate var="nowDate" value="${today}" pattern="yyyy-MM-dd"/> 
+ <fmt:formatDate var="nowTime" value="${today}" pattern="HH:mm"/> 
+ 
+ <c:out value="${nowDate}"   />
+ <c:out value="${nowTime}"/><br><br>
+
+
+<p2><strong><fmt:message key="manage"/></strong></p2>
+  		<nav class="manager-menu">
+
+			<ul>
+			
+				<c:url var="billUrl" value="/jsp/bill/list"/>
+				<c:url var="carriageUrl" value="/jsp/carriage/list"/>
+				<c:url var="routeUrl" value="/jsp/route/list"/>
+				<c:url var="stationUrl" value="/jsp/station/list"/>
+				<c:url var="trainUrl" value="/jsp/train/list"/>
+				<c:url var="userUrl" value="/jsp/user/list"/>
+				
+				
+				<li><a href="${billUrl}"><fmt:message key="manage.bills"/></a></li>
+				
+				<li><a href="${carriageUrl}"><fmt:message key="manage.carriages"/></a></li>
+				
+				<li><a href="${routeUrl}" ><fmt:message key="manage.routes"/></a></li>
+				
+				<li><a href="${stationUrl}"><fmt:message key="manage.stations"/></a></li>
+			
+				<li><a href="${trainUrl}"><fmt:message key="manage.trains"/></a></li>
+				
+        		<li><a href="${userUrl}"><fmt:message key="manage.users"/></a></li>
+							
+      		</ul>
+    	</nav>
