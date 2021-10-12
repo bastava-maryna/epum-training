@@ -31,7 +31,6 @@ public class CarriageChooseCommand implements Command {
 			throws ServletException, IOException {
 		
 		request.getSession(false).removeAttribute("errors");
-		System.out.println("Session in carriageChoose:: ID="+request.getSession(false).getId());
 		
 		LocalTime departureTime=null;
 		LocalTime destinationTime=null;

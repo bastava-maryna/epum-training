@@ -58,7 +58,6 @@ public class GetLoginCommand implements Command {
 					String errorMessage="Invalid login or password";
 					request.setAttribute("errorMessage",errorMessage);
 
-					System.out.println("user isnt found -> redirect to /jsp/login:="+request.getContextPath()+"/jsp/login?message="+"Invalid login or password");
 					response.sendRedirect(request.getContextPath()+"/jsp/login?message="+"login.message.invalidLoginOrPassword");
 					return "REDIRECTED";
 				}

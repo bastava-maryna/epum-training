@@ -78,7 +78,6 @@ public class ConnectionPool {
 				throw new ConnectionPoolException(e);
 			}
 		}
-		System.out.println("availableConnection size="+availableConnections.size()+";  usedConnection size="+usedConnections.size());
 		usedConnections.add(connection);
 		return (connection);
 	}

@@ -26,8 +26,7 @@ public final class ServiceProvider  implements AutoCloseable{
 		if(connection==null) {
 			try {
 				connection=ConnectionPool.getInstance().getConnection();
-				
-				System.out.println("get connection in service provider ");
+		
 			} catch (ConnectionPoolException e) {
 				throw new ServiceException(e);
 			} }
@@ -114,9 +113,7 @@ public final class ServiceProvider  implements AutoCloseable{
 	
 	@Override
 	public void close()  {
-		try {
-			System.out.println("Close connection in serviceProvider!!!!!!!!!!!!!!!!!!!!!!!!");
-			
+		try {			
 			connection.close();
 			connection=null;
 		}catch (Exception e){}

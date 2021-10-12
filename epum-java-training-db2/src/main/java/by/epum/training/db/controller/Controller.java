@@ -46,7 +46,6 @@ public class Controller extends HttpServlet{
 		}
 
 		if(!path.equals("REDIRECTED")) {
-			System.out.println(" not redirected, wll be dispatched to="+path);
 			request.getRequestDispatcher(path).forward(request, response);
 		}
 	}
@@ -54,11 +53,9 @@ public class Controller extends HttpServlet{
 
 	private String getPath(HttpServletRequest request) {
 		String uri = request.getRequestURI();
-
-		System.out.println("URI from input req="+uri);
 		
 		String path=uri.substring(request.getContextPath().length());
-		System.out.println("path from input req="+path);
+
 		return path;
 	}
 
